@@ -2,13 +2,25 @@ function convertTemperature() {
     const celsiusInput = document.getElementById('celsius');
     const fahrenheitInput = document.getElementById('fahrenheit');
 
-    if (!isNaN(celsiusInput.value)) {
+    if (celsiusInput.value !== "") {
+        // Convert Celsius to Fahrenheit
         const celsiusValue = parseFloat(celsiusInput.value);
-        const fahrenheitValue = (celsiusValue * 9 / 5) + 32;
-
-        fahrenheitInput.value=fahrenheitValue.toFixed(2);
-    }else if(){
-    }else{
-        alert("Please a valid Number!..")
+        if (!isNaN(celsiusValue)) {
+            const fahrenheitValue = (celsiusValue * 9 / 5) + 32;
+            fahrenheitInput.value = fahrenheitValue.toFixed(2);
+        } else {
+            alert("Please enter a valid number for Celsius!");
+        }
+    } else if (fahrenheitInput.value !== "") {
+        // Convert Fahrenheit to Celsius
+        const fahrenheitValue = parseFloat(fahrenheitInput.value);
+        if (!isNaN(fahrenheitValue)) {
+            const celsiusValue = (fahrenheitValue - 32) * 5 / 9;
+            celsiusInput.value = celsiusValue.toFixed(2);
+        } else {
+            alert("Please enter a valid number for Fahrenheit!");
+        }
+    } else {
+        alert("Please enter a value in either Celsius or Fahrenheit!");
     }
 }
